@@ -49,9 +49,15 @@ class ProgressBar extends Component {
   }
 
   render() {
+    var padding = 0
+    if (this.props.backgroundStyle && this.props.backgroundStyle.padding) {
+      padding = this.props.backgroundStyle.padding
+    }
+
+    var maxWidth = this.props.style.width - padding * 2
     var fillWidth = this.state.progress.interpolate({
       inputRange: [0, 1],
-      outputRange: [0 * this.props.style.width, 1 * this.props.style.width],
+      outputRange: [0 * maxWidth, 1 * maxWidth],
     });
 
     return (
